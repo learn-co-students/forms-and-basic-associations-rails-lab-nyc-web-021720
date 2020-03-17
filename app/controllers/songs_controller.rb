@@ -14,13 +14,13 @@ class SongsController < ApplicationController
   end
 
   def create
-    artist = Artist.find_or_create_by(name: song_params[:artist_name])
-    @song = artist.songs.build(song_params)
-
-    if @song.save
-      redirect_to @song
-    else
-      render :new
+    @song = Song.create(song_params)
+    if @song.valid?
+    redirect_to song_path(@song)
+    else 
+      flash[:error] = "This song already exists"
+      #flash[:errors] = @song.errors.full_messages
+      redirect_to new_song_path
     end
   end
 

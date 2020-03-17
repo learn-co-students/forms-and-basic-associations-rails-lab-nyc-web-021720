@@ -1,12 +1,14 @@
 <h1>All songs</h1>
+<%= link_to "Add a new song", new_song_path(@song) %><br><br>
 
 <% @songs.each do |song| %>
-  <span class=song-title><%= song.title %></span>
-  <span class=song-artist><%= song.try(:artist).try(:name) %></span>
-  <span class=song-genre><%= song.try(:genre).try(:name) %></span>
+  <span class=song-title><%= song.title %> - </span>
+  <span class=song-artist><%= song.try(:artist).try(:name) %> - </span>
+  <span class=song-genre><%= song.try(:genre).try(:name) %></span><br><br>
+  Comments:
   <ul class=song-notes>
     <% song.try(:notes).try :each do |note| %>
-      <li class=song-note><%= note.content %></li>
+      <li class=song-note> <%= note.content %></li>
     <% end %>
   </ul>
 

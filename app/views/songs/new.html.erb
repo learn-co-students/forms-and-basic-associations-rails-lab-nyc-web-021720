@@ -1,5 +1,14 @@
 <h1>Create a Song</h1>
 
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+</ul>
+
 <%= form_for @song  do |f| %>
   <%= f.label "Song title:" %>
   <%= f.text_field :title %>
