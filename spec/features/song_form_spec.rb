@@ -31,6 +31,7 @@ describe "the song form", :type => :feature do
   it 'creates a song with notes' do
     visit '/songs/new'
     fill_in :song_title, with: 'Little Earthquakes'
+    # byebug
     fill_in :song_notes_attributes_0_content, with: 'great piano'
     fill_in :song_notes_attributes_1_content, with: 'inaccurate seismology'
     find('input[name="commit"]').click
