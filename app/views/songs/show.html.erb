@@ -1,3 +1,12 @@
 <h1>Songs#show</h1>
 
 Title: <%= @song.title %>
+<br>
+Song Notes: 
+<ul>
+<% @song.notes.each do |note| %>
+  <li><%= note.content  %></li>
+<% end %>
+</ul>
+
+<%= button_to "Delete Song", song_path(@song), method: :delete, data: { confirm: "Are you sure?" }  %>
